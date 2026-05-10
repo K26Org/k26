@@ -1,294 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>K26 IT Center | Start Your IT Career</title>
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #003366; 
-            --accent-blue: #5dade2;  
-            --light-bg: #f4f7f9;
-            --text-dark: #333;
-            --white: #ffffff;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text-dark); background-color: var(--light-bg); }
-
-        /* Updated Navigation with Logo Support */
-        nav { 
-            background: var(--primary-blue); 
-            padding: 0.5rem 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 50px; width: auto; margin-right: 15px; } /* Adjust height as needed */
-        .logo-text { color: var(--white); font-weight: 800; font-size: 1.5rem; letter-spacing: 1px; }
-
-        .nav-links a { color: var(--white); text-decoration: none; margin-left: 25px; font-size: 0.95rem; font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent-blue); }
-
-        /* Hero Section */
-        .hero { background: linear-gradient(rgba(0,51,102,0.85), rgba(0,51,102,0.85)), url('your-background-image.jpg'); background-size: cover; color: var(--white); padding: 120px 5%; text-align: center; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
-        .hero p { font-size: 1.25rem; max-width: 800px; margin: 0 auto 2.5rem; opacity: 0.9; font-weight: 300; }
-        .cta-btn { background: var(--accent-blue); color: var(--white); padding: 18px 45px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s; display: inline-block; box-shadow: 0 4px 15px rgba(93, 173, 226, 0.4); }
-        .cta-btn:hover { background: #3498db; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(93, 173, 226, 0.6); }
-
-        /* Course Cards Styling */
-        .container { padding: 100px 5%; max-width: 1200px; margin: auto; }
-        .section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; color: var(--primary-blue); font-weight: 800; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-        
-        .course-card { background: var(--white); padding: 40px; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: 0.4s; position: relative; overflow: hidden; border-bottom: 6px solid var(--accent-blue); }
-        .course-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .course-card h3 { margin-bottom: 20px; color: var(--primary-blue); font-size: 1.4rem; }
-        .course-card ul { list-style: none; }
-        .course-card li { margin-bottom: 12px; font-size: 1rem; color: #555; }
-        .course-card li::before { content: "✔"; color: var(--accent-blue); font-weight: bold; margin-right: 12px; }
-        .tag { position: absolute; top: 20px; right: 20px; background: #e8f4fd; color: var(--primary-blue); padding: 6px 15px; border-radius: 30px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; }
-
-        /* Learning Options Section */
-        .options { background: var(--primary-blue); color: var(--white); text-align: center; padding: 80px 5%; }
-        .options h2 { margin-bottom: 40px; font-size: 2rem; }
-        .options-list { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
-        .option-item { font-size: 1.1rem; padding: 20px 30px; background: rgba(255,255,255,0.1); border-radius: 12px; min-width: 200px; }
-
-        footer { background: #fff; padding: 80px 5%; text-align: center; border-top: 1px solid #eee; }
-        .contact-info { margin: 30px 0; font-size: 1.1rem; color: #444; }
-        .contact-info p { margin-bottom: 10px; }
-        
-        @media (max-width: 768px) { 
-            .hero h1 { font-size: 2.2rem; }
-            .nav-links { display: none; } /* Simplified for mobile */
-        }
-    </style>
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/request.js"></script>
+    <script src="js/EmailValidate.js"></script>
+    <script src="js/PhoneValidate.js"></script>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo-container">
-            <!-- Ensure your cropped logo file is named logo.png and in the same folder -->
-            <img src="logo.png" alt="K26 Logo" class="logo-img">
-            <span class="logo-text">K26 IT CENTER</span>
-        </a>
-        <div class="nav-links">
-            <a href="#courses">Courses</a>
-            <a href="#options">Learning</a>
-            <a href="#contact">Enroll</a>
-        </div>
-    </nav>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-    <section class="hero">
-        <h1>🌟 Start Your IT Career Today</h1>
-        <p>Learn practical skills from beginner to job-ready. We focus on hands-on learning, building actual systems used in real business environments.</p>
-        <a href="#contact" class="cta-btn">ENROLL NOW</a>
-    </section>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <span>K26</span> IT CENTER
+    <span class="logo-badge">YANGON</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#modes">Learning</a></li>
+    <li><a href="#instructor">Instructor</a></li>
+    <li><a href="#erp">Products</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Enroll Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-    <div class="container" id="courses">
-        <h2 class="section-title">Professional Training Programs</h2>
-        <div class="grid">
-            <div class="course-card">
-                <span class="tag">Foundation</span>
-                <h3>1. Computer Basic + Office</h3>
-                <ul>
-                    <li>Computer Fundamentals & Windows OS</li>
-                    <li>File Management & Internet Usage</li>
-                    <li>Microsoft Word (Docs, CVs, Letters)</li>
-                    <li>Microsoft Excel & PowerPoint</li>
-                    <li>Online Productivity Tools</li>
-                </ul>
-            </div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
 
-            <div class="course-card">
-                <span class="tag">Development</span>
-                <h3>2. Programming Basic</h3>
-                <ul>
-                    <li>C# Programming Fundamentals</li>
-                    <li>Problem Solving & Logic</li>
-                    <li>ASP.NET Core MVC (Web Basics)</li>
-                    <li>Microsoft SQL Server (MSSQL)</li>
-                    <li>IIS Hosting on Local PC</li>
-                </ul>
-                <p style="margin-top:20px; font-size:0.9rem; color:#666;"><strong>Outcome:</strong> Students build real-world web apps.</p>
-            </div>
-
-            <div class="course-card">
-                <span class="tag">Expert</span>
-                <h3>3. Advanced Programming</h3>
-                <ul>
-                    <li>Full Stack: .NET Core + React/Angular</li>
-                    <li>Databases: MSSQL / MySQL / PostgreSQL</li>
-                    <li>Cloud: AWS Hosting & CI/CD Basics</li>
-                    <li>Security: JWT & Role-Based Access</li>
-                    <li>Real-world ERP System Experience</li>
-                </ul>
-            </div>
-        </div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Professional IT Training Center</div>
+    <h1>
+      Build Your <span class="accent">Tech Career</span>
+      <span class="line2">From Scratch</span>
+    </h1>
+    <p class="hero-desc">From computer basics to full-stack enterprise development — hands-on, real-world curriculum built by a Senior Software Architect with 10+ years of industry experience.</p>
+    <div class="hero-actions">
+      <a href="#courses" class="btn-primary">Explore Courses</a>
+      <a href="#contact" class="btn-outline">Join Next Batch</a>
     </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Course Levels</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Learning Modes</div>
+      </div>
+    </div>
+  </div>
 
-    <section class="options" id="options">
-        <h2>Flexible Learning Options</h2>
-        <div class="options-list">
-            <div class="option-item">📍 Center Class (Physical)</div>
-            <div class="option-item">💻 Online Live Class</div>
-            <div class="option-item">📽️ Video Course (Self-paced)</div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="card-tag"><span class="dot"></span> Now Enrolling</div>
+      <div class="card-title">Professional Programs</div>
+      <div class="course-pill">
+        <span class="pill-icon">🖥️</span>
+        <span class="pill-text">Computer Basic + Office</span>
+        <span class="pill-level lv-1">FOUNDATION</span>
+      </div>
+      <div class="course-pill">
+        <span class="pill-icon">⌨️</span>
+        <span class="pill-text">Programming Basic</span>
+        <span class="pill-level lv-2">DEV</span>
+      </div>
+      <div class="course-pill">
+        <span class="pill-icon">🚀</span>
+        <span class="pill-text">Advanced Programming</span>
+        <span class="pill-level lv-3">EXPERT</span>
+      </div>
+      <div class="card-footer">
+        <div>📍 Hlaing, <strong>Yangon</strong></div>
+        <div>📞 <strong>09424170766</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="section-inner">
+    <div class="section-label">Training Programs</div>
+    <h2>Choose Your Learning Path</h2>
+    <p class="muted-text">Structured curriculum designed to take you from zero to job-ready. Each level builds on the last with real-world projects.</p>
+
+    <div class="courses-grid">
+      <!-- Course 1 -->
+      <div class="course-card c1 fade-up">
+        <div class="course-number">01</div>
+        <div class="course-badge b-cyan">Foundation</div>
+        <div class="course-title">Computer Basic + Office</div>
+        <ul class="course-features">
+          <li>Computer Fundamentals & Windows OS</li>
+          <li>File Management & Internet Usage</li>
+          <li>Microsoft Word — Docs, CVs, Letters</li>
+          <li>Microsoft Excel & PowerPoint</li>
+          <li>Online Productivity Tools</li>
+        </ul>
+        <div class="course-outcome">✓ Become fully confident with computers and office software for any workplace.</div>
+      </div>
+      <!-- Course 2 -->
+      <div class="course-card c2 fade-up">
+        <div class="course-number">02</div>
+        <div class="course-badge b-green">Development</div>
+        <div class="course-title">Programming Basic</div>
+        <ul class="course-features">
+          <li>C# Programming Fundamentals</li>
+          <li>Problem Solving & Logic</li>
+          <li>ASP.NET Core MVC — Web Basics</li>
+          <li>Microsoft SQL Server (MSSQL)</li>
+          <li>IIS Hosting on Local PC</li>
+        </ul>
+        <div class="course-outcome">✓ Students build real-world web applications with databases from scratch.</div>
+      </div>
+      <!-- Course 3 -->
+      <div class="course-card c3 fade-up">
+        <div class="course-number">03</div>
+        <div class="course-badge b-orange">Expert</div>
+        <div class="course-title">Advanced Programming</div>
+        <ul class="course-features">
+          <li>Full Stack: .NET Core + React/Angular</li>
+          <li>Databases: MSSQL / MySQL / PostgreSQL</li>
+          <li>Cloud: AWS Hosting & CI/CD Basics</li>
+          <li>Security: JWT & Role-Based Access</li>
+          <li>Real-world ERP System Experience</li>
+        </ul>
+        <div class="course-outcome">✓ Graduate job-ready with enterprise-grade development skills.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LEARNING MODES -->
+<section id="modes">
+  <div class="section-inner">
+    <div class="section-label">Flexible Learning</div>
+    <h2>Learn The Way You Want</h2>
+    <p class="muted-text">Three flexible formats so you can fit professional IT training around your life — no matter where you are.</p>
+    <div class="modes-grid">
+      <div class="mode-card fade-up">
+        <div class="mode-icon">📍</div>
+        <div class="mode-title">Center Class</div>
+        <p class="mode-desc">Physical classroom training at our Hlaing, Yangon center. Hands-on labs with direct instructor access and peer collaboration.</p>
+      </div>
+      <div class="mode-card fade-up">
+        <div class="mode-icon">💻</div>
+        <div class="mode-title">Online Live Class</div>
+        <p class="mode-desc">Attend real-time sessions from anywhere. Same live instruction and Q&A — just join via your device from home or office.</p>
+      </div>
+      <div class="mode-card fade-up">
+        <div class="mode-icon">📽️</div>
+        <div class="mode-title">Video Course</div>
+        <p class="mode-desc">Self-paced video lessons you can watch anytime. Ideal for working professionals who need to study at their own schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INSTRUCTOR -->
+<section id="instructor">
+  <div class="section-inner">
+    <div class="section-label">Expert Instructor</div>
+    <h2>Learn From The Best</h2>
+    <div class="instructor-wrap">
+      <div class="instructor-photo-wrap fade-up">
+          <div class="photo-placeholder">
+              <img src="images/ksh.png"
+                   alt="Kyaw Swar Hein"
+                   style="width:100%; height:100%; object-fit:cover; border-radius:inherit;" />
+              <!--<div class="ph-icon">👨‍💻</div>
+    <div class="ph-name">Kyaw Swar Hein</div>-->
+          </div>
+        <div class="exp-badge">
+          <div class="exp-num">10+</div>
+          <div class="exp-label">YRS EXP</div>
         </div>
-    </section>
-
-
-<style>
-    .founder-section { background: #fff; padding: 80px 5%; font-family: 'Inter', sans-serif; }
-    
-    .founder-container { 
-        max-width: 1000px; 
-        margin: 0 auto; 
-        display: grid;
-        grid-template-columns: 320px 1fr; /* Fixed width for the left side */
-        gap: 40px;
-        background: #ffffff;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        border-left: 8px solid #003366;
-        align-items: start;
-    }
-
-    /* Fixed Badge Styling */
-    .founder-image-box { position: relative; text-align: center; }
-    
-    .founder-photo { 
-        width: 100%; 
-        max-width: 280px;
-        border-radius: 12px; 
-        object-fit: cover;
-        display: block;
-    }
-
-    .badge-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: -20px; /* Pulls it up slightly over the photo */
-        position: relative;
-        z-index: 10;
-    }
-
-    .years-text {
-        background: #5dade2;
-        color: white;
-        padding: 8px 15px;
-        border-radius: 5px;
-        font-size: 0.75rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .plus-circle {
-        background: #003366;
-        color: white;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 0.8rem;
-        margin-left: -10px; /* Overlaps the blue bar slightly */
-        border: 2px solid white;
-    }
-
-    .founder-info h2 { color: #003366; font-size: 2.4rem; margin-bottom: 5px; }
-    .founder-role { color: #555; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; display: block; }
-    .founder-bio { color: #444; line-height: 1.6; margin-bottom: 25px; font-size: 0.95rem; }
-    
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
-    .skill-tag { 
-        background: #eef6fb; 
-        color: #003366; 
-        padding: 6px 14px; 
-        border-radius: 4px; 
-        font-size: 0.8rem; 
-        font-weight: 700;
-        border: 1px solid #d1e3f0;
-    }
-
-    .project-highlight {
-        background: #f0faff;
-        padding: 20px;
-        border-radius: 8px;
-        border-left: 4px solid #5dade2;
-        font-size: 0.95rem;
-    }
-
-    @media (max-width: 850px) {
-        .founder-container { grid-template-columns: 1fr; text-align: center; padding: 20px; }
-        .founder-image-box { margin: 0 auto 40px; }
-        .skill-tags { justify-content: center; }
-    }
-</style>
-
-<section class="founder-section" id="about">
-    <h2 style="text-align: center; color: #003366; margin-bottom: 50px; font-size: 2.2rem;">Expert-Led Training</h2>
-    
-    <div class="founder-container">
-        <!-- Left Side: Photo and Badges -->
-        <div class="founder-image-box">
-            <img src="kyaw-swar-hein.png" alt="Kyaw Swar Hein" class="founder-photo">
-            <div class="badge-container">
-                <div class="years-text">YEARS EXPERIENCE</div>
-                <div class="plus-circle">10+</div>
-            </div>
+      </div>
+      <div class="fade-up">
+        <div class="section-label" style="margin-bottom:12px;">Founder & Lead Instructor</div>
+        <div class="instructor-name">Kyaw Swar Hein</div>
+        <div class="instructor-role">Founder & Project Manager | Full-Stack Developer</div>
+        <p class="instructor-bio">A veteran Software Architect specializing in enterprise-grade web, desktop, and cloud applications. With over a decade of industry experience, Kyaw Swar Hein has led the development of complex SaaS platforms, HR systems, and ERP solutions using the latest .NET Core and Blazor technologies.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">C# / .NET Core</span>
+          <span class="tech-tag">ASP.NET Web API</span>
+          <span class="tech-tag">Blazor / Angular</span>
+          <span class="tech-tag">SQL Server</span>
+          <span class="tech-tag">AWS</span>
+          <span class="tech-tag">Cloud Architecture</span>
         </div>
+        <div class="current-project">
+          📌 <strong>Current Project:</strong> Leading the development of the <strong>K26 ERP Cloud System</strong> — an enterprise-grade platform built on the same architecture taught at K26 Training Center.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Right Side: Info -->
-        <div class="founder-info">
-            <h2>Kyaw Swar Hein</h2>
-            <span class="founder-role">Founder & Project Manager | Full-Stack Developer</span>
-            
-            <p class="founder-bio">
-                A veteran Software Architect specializing in enterprise-grade web, desktop, and cloud applications. With over a decade of experience, Kyaw Swar Hein has led the development of complex SaaS platforms, HR systems, and ERP solutions using the latest <strong>.NET Core</strong> and <strong>Blazor</strong> technologies.
-            </p>
+<div class="divider"></div>
 
-            <div class="skill-tags">
-                <span class="skill-tag">C# / .NET Core</span>
-                <span class="skill-tag">ASP.NET Web API</span>
-                <span class="skill-tag">Blazor / Angular</span>
-                <span class="skill-tag">SQL Server / AWS</span>
-                <span class="skill-tag">Cloud Architecture</span>
+<!-- POS/ERP SECTION -->
+<section class="erp-section" id="erp">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--orange)">Coming Soon</div>
+    <h2>More Than a Training Center</h2>
+    <p class="muted-text">K26 is expanding into enterprise software solutions — purpose-built POS and ERP systems for Myanmar businesses.</p>
+
+    <div class="erp-banner">
+      <div class="erp-inner">
+        <div>
+          <div class="erp-coming-soon">🔔 Launching Soon</div>
+          <div class="erp-title">K26 <span>POS & ERP</span><br/>Cloud System</div>
+          <p class="erp-desc">Enterprise-grade Point of Sale and ERP solutions built for local Myanmar businesses — the same technology our students learn on. Inventory, HR, payroll, sales, and cloud reporting in one platform.</p>
+          <div class="notify-form">
+            <input type="email" class="notify-input" placeholder="your@email.com" id="notifyEmail"/>
+            <button class="btn-orange" id="notifyBtn">Notify Me</button>
+          </div>
+          <div class="success-msg" id="notifySuccess">✓ You're on the list! We'll notify you at launch.</div>
+        </div>
+        <div class="erp-features">
+          <div class="erp-feat">
+            <div class="erp-feat-icon">🏪</div>
+            <div>
+              <div class="erp-feat-title">POS System</div>
+              <div class="erp-feat-desc">Fast, reliable point-of-sale for retail, restaurants, and services.</div>
             </div>
+          </div>
+          <div class="erp-feat">
+            <div class="erp-feat-icon">📦</div>
+            <div>
+              <div class="erp-feat-title">Inventory</div>
+              <div class="erp-feat-desc">Real-time stock management across multiple branches.</div>
+            </div>
+          </div>
+          <div class="erp-feat">
+            <div class="erp-feat-icon">👥</div>
+            <div>
+              <div class="erp-feat-title">HR & Payroll</div>
+              <div class="erp-feat-desc">Employee records, attendance tracking, and payroll automation.</div>
+            </div>
+          </div>
+          <div class="erp-feat">
+            <div class="erp-feat-icon">☁️</div>
+            <div>
+              <div class="erp-feat-title">Cloud Reports</div>
+              <div class="erp-feat-desc">Live dashboards and business insights from any device.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="project-highlight">
-                📌 <strong>Current Project:</strong> Leading the production of the <strong>K26 ERP Cloud System</strong>. 
-                Students at K26 Training Center benefit from a curriculum built on the same architecture used in this modern enterprise software.
+<div class="divider"></div>
+
+<section class="erp-section" id="betel" style="display:none;">
+    <div class="section-inner">
+        <div class="section-label" style="color:var(--orange)">Coming Soon</div>       
+        <p class="muted-text">K26 is expanding to open traditional betel shop — purpose for Myanmar betel lovers.</p>
+
+        <div class="erp-banner">
+            <div class="erp-inner">
+                <div>
+                    <div class="erp-coming-soon">🔔 Launching Soon</div>
+                    <div class="erp-title">K26 <span>Traditional Betel</span><br />Paan Shop</div>
+                    <p class="erp-desc">There can get all related things with betel. And can get both Yangon and Mandalay betels. This shop will open at 2027 near Than Lan Bus Stop.</p>
+                    <div class="notify-form">
+                        <input type="email" class="notify-input" placeholder="your@email.com" id="notifyEmail" />
+                        <button class="btn-orange" id="notifyBtn">Notify Me</button>
+                    </div>
+                    <div class="success-msg" id="notifySuccess">✓ You're on the list! We'll notify you at launch.</div>
+                </div>
+                <div class="erp-features">
+                    <div class="erp-feat">
+                        <div class="erp-feat-icon">🍃</div>
+                        <div>
+                            <div class="erp-feat-title">Yangon Betel</div>
+                            <div class="erp-feat-desc">Can get Yangon Betel style with Yangon Betel leaves.</div>
+                        </div>
+                    </div>
+                    <div class="erp-feat">
+                        <div class="erp-feat-icon">🍃</div>
+                        <div>
+                            <div class="erp-feat-title">Mandalay Betel</div>
+                            <div class="erp-feat-desc">Can get Mandalay Betel style with Mandalay Betel leaves</div>
+                        </div>
+                    </div>                  
+                </div>
             </div>
         </div>
     </div>
 </section>
-       
 
-    <footer id="contact">
-        <h2>Join the Next Batch</h2>
-        <p>Beginner → Developer → Job Ready Professional</p>
-        <div class="contact-info">
-            <p><strong>📍 Location:</strong> No.27, Kyaung Kone 2 street, 7 Quarter, Hlaing Township, Yangon</p>
-	    <p><strong>📩 Email:</strong> <a href="https://mail.google.com" style="color: #003366; text-decoration: none; font-weight: 600;">eieizin.ucsy@gmail.com</a></p>
-            <p><strong>📞 Phone:</strong> 09424170766, 09427660911</p>
-	    
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get Started</div>
+    <h2>Join the Next Batch</h2>
+    <p class="muted-text">Beginner → Developer → Job-Ready Professional. Send us a message and we'll help you choose the right course.</p>
+
+    <div class="contact-grid">
+        <div class="contact-form-card fade-up">
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Your Name</label>
+                    <input type="text" class="form-control" placeholder="Mg Mg" id="fname" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" placeholder="you@email.com" id="femail" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Country</label>
+                    <select class="form-control select-control" id="countryId">
+                        <option value="">Select a country…</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-control" placeholder="9xxxxxxxxx" id="fphone" />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Interested In</label>
+                <select class="form-control select-control" id="courseId">
+                    <option value="">Select a course…</option>                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Message (optional)</label>
+                <textarea class="form-control" placeholder="Any questions or preferred schedule…" id="fmsg"></textarea>
+            </div>
+            <button class="btn-primary" id="submitBtn" style="width:100%;text-align:center;">Send Enrollment Request →</button>
+            <div class="success-msg" id="formSuccess">✓ Message sent! We'll contact you within 24 hours.</div>
         </div>
-        <p style="color: #888; font-size: 0.8rem;">© 2026 K26 Training Center. Professional IT Certification.</p>
-    </footer>
+
+      <div class="contact-info fade-up">
+        <h3>Visit Us</h3>
+        <p class="sub">We're located in Hlaing Township, Yangon. Walk in anytime or call ahead — we're happy to answer questions and give you a tour.</p>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Address</div>
+            <div class="info-value">No.27, Kyaung Kone 2 Street<br/>7 Quarter, Hlaing Township, Yangon</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">Phone</div>
+            <div class="info-value">09402210885</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📩</div>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-value">k26adm@gmail.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span>K26</span> IT CENTER</div>
+  <div class="footer-links">
+    <a href="#courses">Courses</a>
+    <a href="#modes">Learning</a>
+    <a href="#erp">Products</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 K26 Training Center. Yangon, Myanmar.</div>
+</footer>
+
 
 </body>
 </html>
