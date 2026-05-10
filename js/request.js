@@ -72,6 +72,27 @@ $(document).ready(function () {
         $('#cursorRing').css({ transform: 'translate(-50%,-50%) scale(1)', borderColor: 'rgba(0,229,255,0.5)' });
     });
 
+
+    /* HAMBURGER TOGGLE */
+    $('#hamburger').on('click', function () {
+        $(this).toggleClass('open');
+        $('#mobileMenu').toggleClass('open');
+    });
+
+    /* Close mobile menu when any link inside it is clicked */
+    $('#mobileMenu a').on('click', function () {
+        $('#hamburger').removeClass('open');
+        $('#mobileMenu').removeClass('open');
+    });
+
+    /* Close mobile menu when clicking outside */
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('#hamburger, #mobileMenu').length) {
+            $('#hamburger').removeClass('open');
+            $('#mobileMenu').removeClass('open');
+        }
+    });
+
     /* NAVBAR SCROLL */
     $(window).on('scroll', function () {
         if ($(this).scrollTop() > 60) {
