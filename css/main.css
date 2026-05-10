@@ -174,6 +174,96 @@ nav {
         transform: translateY(-1px);
     }
 
+/* HAMBURGER — hidden by default, shown on mobile via media query */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+}
+
+    .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--white);
+        transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+/* MOBILE MENU — always hidden, shown only on mobile when .open */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: rgba(8,12,16,0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    z-index: 99;
+    flex-direction: column;
+    padding: 16px 30px 28px;
+    top: 61px; /* matches nav height */
+}
+
+    .mobile-menu a {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.82rem;
+        color: var(--muted);
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+        transition: color 0.2s;
+        display: block;
+    }
+
+        .mobile-menu a:last-of-type {
+            border-bottom: none;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--cyan);
+        }
+
+    .mobile-menu .mobile-cta {
+        margin-top: 18px;
+        background: var(--cyan);
+        color: #000;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 12px 22px;
+        border-radius: 4px;
+        text-align: center;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        display: block;
+        border-bottom: none;
+        transition: background 0.2s;
+    }
+
+        .mobile-menu .mobile-cta:hover {
+            background: #00b8d4;
+            color: #000;
+        }
+
 /* HERO */
 .hero {
     min-height: 100vh;
@@ -341,7 +431,7 @@ h1 {
     letter-spacing: 0.04em;
 }
 
-/* HERO RIGHT — Floating Card */
+/* HERO RIGHT */
 .hero-right {
     position: relative;
     z-index: 2;
@@ -477,7 +567,7 @@ h1 {
         color: var(--white);
     }
 
-/* SECTIONS COMMON */
+/* SECTIONS */
 section {
     position: relative;
     z-index: 2;
@@ -891,7 +981,7 @@ h2 {
         color: var(--white);
     }
 
-/* POS/ERP SECTION */
+/* ERP SECTION */
 .erp-section {
     background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
 }
@@ -1081,6 +1171,8 @@ h2 {
     margin-bottom: 8px;
 }
 
+
+
 .form-control {
     width: 100%;
     background: rgba(255,255,255,0.04);
@@ -1098,10 +1190,10 @@ h2 {
     background: #080c10 !important;
 }
 
-.form-control:focus {
-    border-color: var(--cyan);
-    box-shadow: 0 0 0 3px rgba(0,229,255,0.08);
-}
+    .form-control:focus {
+        border-color: var(--cyan);
+        box-shadow: 0 0 0 3px rgba(0,229,255,0.08);
+    }
 
     .form-control::placeholder {
         color: #394553;
@@ -1222,25 +1314,6 @@ footer {
             color: var(--cyan);
         }
 
-/* MOBILE MENU */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: none;
-    background: none;
-    border: none;
-    padding: 4px;
-}
-
-    .hamburger span {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background: var(--white);
-        transition: all 0.3s;
-    }
-
 /* SCROLL ANIMATIONS */
 .fade-up {
     opacity: 0;
@@ -1280,7 +1353,37 @@ footer {
     font-family: 'Space Mono', monospace;
 }
 
+/* =====================
+     RESPONSIVE / MOBILE
+     ===================== */
 @media (max-width: 1024px) {
+    nav {
+        padding: 18px 30px;
+    }
+
+        nav.scrolled {
+            padding: 12px 30px;
+        }
+
+    /* Hide desktop nav items */
+    .nav-links {
+        display: none;
+    }
+
+    .nav-cta {
+        display: none;
+    }
+
+    /* Show hamburger */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Show mobile menu when open */
+    .mobile-menu.open {
+        display: flex;
+    }
+
     .hero {
         grid-template-columns: 1fr;
         padding: 120px 40px 60px;
@@ -1316,22 +1419,6 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    nav {
-        padding: 18px 30px;
-    }
-
-        nav.scrolled {
-            padding: 12px 30px;
-        }
-
-    .nav-links, .nav-cta {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
     .section-inner {
         padding: 70px 30px;
     }
@@ -1352,5 +1439,52 @@ footer {
 
     .form-row {
         grid-template-columns: 1fr;
+    }
+
+    .divider {
+        margin: 0 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        padding: 16px 20px;
+    }
+
+    .nav-logo {
+        font-size: 1.1rem;
+    }
+
+    .logo-badge {
+        display: none;
+    }
+
+    .mobile-menu {
+        top: 57px;
+        padding: 12px 20px 24px;
+    }
+
+    .hero {
+        padding: 100px 20px 50px;
+    }
+
+    .section-inner {
+        padding: 60px 20px;
+    }
+
+    .erp-banner {
+        padding: 24px 20px;
+    }
+
+    .contact-form-card {
+        padding: 24px 20px;
+    }
+
+    footer {
+        padding: 30px 20px;
+    }
+
+    .hero-stats {
+        gap: 20px;
     }
 }
