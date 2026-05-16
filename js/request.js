@@ -47,6 +47,15 @@ function renderCourses() {
     });
 }
 
+function openQR(src) {
+    document.getElementById("qrModal").style.display = "flex";
+    document.getElementById("qrModalImg").src = src;
+}
+
+function closeQR() {
+    document.getElementById("qrModal").style.display = "none";
+}
+
 $(document).ready(function () {
 
     loadCountries();
