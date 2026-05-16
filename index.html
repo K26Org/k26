@@ -6,6 +6,7 @@
     <title>K26 IT Center | Start Your IT Career</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link href="css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="js/request.js"></script>
@@ -398,6 +399,102 @@
                             <div class="info-value">k26admin@gmail.com</div>
                         </div>
                     </div>
+
+                    <!-- SOCIAL CHANNELS -->
+                    <div class="social-section">
+
+                        <div class="social-header">
+                            <div class="social-title">Connect With Us</div>
+                            <div class="social-sub">
+                                Scan QR or connect directly
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+
+                            <!-- WhatsApp -->
+                            <div class="social-card">
+                                <a href="https://wa.me/qr/57PYJWEUMMZLJ1"
+                                   target="_blank"
+                                   class="social-btn whatsapp">
+
+                                    <div class="social-left">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                        <span>Join our WhatsApp channel</span>
+                                    </div>
+
+                                </a>
+                                <div class="social-qr" onclick="openQR('images/qr-whatsapp.png')">
+                                    <img src="images/qr-whatsapp.png"
+                                         class="qr-mini"
+                                         alt="WhatsApp QR">
+                                </div>
+                            </div>
+
+                            <!-- Telegram -->
+                            <div class="social-card">
+                                <a href="https://t.me/k26itcenter"
+                                   target="_blank"
+                                   class="social-btn telegram">
+
+                                    <div class="social-left">
+                                        <i class="fa-brands fa-telegram"></i>
+                                        <span>Join our Telegram channel</span>
+                                    </div>
+                                </a>
+                                <div class="social-qr" onclick="openQR('images/qr-telegram.png')">
+                                    <img src="images/qr-telegram.png"
+                                         class="qr-mini"
+                                         alt="Telegram QR">
+                                </div>
+                            </div>
+
+                            <!-- Viber -->
+                            <div class="social-card">
+
+                                <!-- LEFT : LINK -->
+                                <a href="https://invite.viber.com/?g2=AQAx15i77sJPKlaGoop6EGy4Fei3fn5Osm7SB1eR%2FTS3VVDcbEns7NKphc1l%2FY2n"
+                                   class="social-btn viber">
+
+                                    <div class="social-left">
+                                        <i class="fa-brands fa-viber"></i>
+                                        <span>Join our Viber channel</span>
+                                    </div>
+
+                                </a>
+
+                                <!-- RIGHT : QR -->
+                                <div class="social-qr" onclick="openQR('images/qr-viber.png')">
+
+                                    <img src="images/qr-viber.png"
+                                         class="qr-mini"
+                                         alt="Viber QR">
+
+                                </div>
+
+                            </div>
+
+                            <!-- Facebook -->
+                            <div class="social-card">
+                                <a href="https://www.facebook.com/profile.php?id=61589559810491"
+                                   target="_blank"
+                                   class="social-btn facebook">
+
+                                    <div class="social-left">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                        <span>Join our Facebook Page</span>
+                                    </div>
+                                </a>
+                                <div class="social-qr" onclick="openQR('images/qr-facebook.png')">
+                                    <img src="images/qr-facebook.png"
+                                         class="qr-mini"
+                                         alt="Facebook QR">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -415,6 +512,15 @@
         <div class="footer-copy">© 2026 K26 Training Center. Yangon, Myanmar.</div>
     </footer>
 
+    <div class="qr-modal" id="qrModal">
+        <div class="qr-modal-content">
+            <span class="qr-close" onclick="closeQR()">&times;</span>
 
+            <img id="qrModalImg"
+                 src=""
+                 class="qr-large"
+                 alt="QR Code">
+        </div>
+    </div>
 </body>
 </html>
