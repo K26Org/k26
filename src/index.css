@@ -1246,4 +1246,12 @@ a{
 
         justify-content:center;
     }
+
+    .navbar-brand{
+        width:300px;
+    }
+
+    .navbar-brand img{
+        width:350px;
+    }
 }
