@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-    baseURL: "https://localhost:7251/api",
+    baseURL: "https://k26api.runasp.net/api",
     headers: {
         "Content-Type": "application/json"
     }
