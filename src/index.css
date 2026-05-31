@@ -1247,11 +1247,9 @@ a{
         justify-content:center;
     }
 
-    .navbar-brand{
-        width:300px;
-    }
+    .navbar-logo {
 
-    .navbar-brand img{
-        width:350px;
+        height: 36px !important;
+        width: 360px !important;
     }
 }
