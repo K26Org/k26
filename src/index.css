@@ -1218,3 +1218,32 @@ a{
 .about-footer-text{
     color:#64748b;
 }
+
+@media (max-width: 768px) {
+
+    .featured-instructor {
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:30px 20px;
+    }
+
+    .featured-instructor-image {
+
+        width:180px;
+
+        height:180px;
+    }
+
+    .featured-instructor-content h3 {
+
+        font-size:1.8rem;
+    }
+
+    .skill-tags {
+
+        justify-content:center;
+    }
+}
