@@ -1252,4 +1252,8 @@ a{
         height: 36px !important;
         width: 360px !important;
     }
+
+    .navbar-brand{
+        width:300px !important;
+    }
 }
