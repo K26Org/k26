@@ -32,6 +32,7 @@ export default function Navbar() {
     <img
         src="/images/k26_logo.png"
         alt="K26"
+        className="navbar-logo"
         style={{
             height:"65px",
             width:"auto",
